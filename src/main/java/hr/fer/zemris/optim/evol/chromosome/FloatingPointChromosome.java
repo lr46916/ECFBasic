@@ -15,7 +15,9 @@ public class FloatingPointChromosome extends Chromosome {
 
 	@Override
 	public Chromosome clone() {
-		return new FloatingPointChromosome(Arrays.copyOf(data, data.length));
+		FloatingPointChromosome res = new FloatingPointChromosome(Arrays.copyOf(data, data.length));
+		res.fitness = this.fitness;
+		return res;
 	}
 
 	@Override
@@ -25,7 +27,7 @@ public class FloatingPointChromosome extends Chromosome {
 	
 	@Override
 	public String toString(){
-		return Arrays.toString(data);
+		return Arrays.toString(data) + " -> " + fitness;
 	}
 	
 	@Override

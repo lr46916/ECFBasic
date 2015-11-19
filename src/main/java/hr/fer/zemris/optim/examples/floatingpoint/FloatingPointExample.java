@@ -15,9 +15,14 @@ import hr.fer.zemris.optim.evol.selection.impl.SelectionTournament;
 
 public class FloatingPointExample {
 
+	
+	/**
+	 * Example of finding a minimum of a function f(x1,...,x5) = x1^2 + x2^2 + ... + x5^2 
+	 * using genetic alghorithm
+	 */
 	public static void main(String[] args) {
 
-		PopulationGenerator<FloatingPointChromosome> pg = new FloatingPointChromosomePG(2);
+		PopulationGenerator<FloatingPointChromosome> pg = new FloatingPointChromosomePG(5);
 
 		SelectionTournament selection = new KTournamentSelection(3);
 
@@ -26,15 +31,19 @@ public class FloatingPointExample {
 		Mutation<FloatingPointChromosome> mutation = new FPGaussianMutation(0, 1);
 
 		Evaluator<FloatingPointChromosome> evaluator = (chromosome) -> {
-			chromosome.fitness = chromosome.data[0] * chromosome.data[0] + chromosome.data[1] * chromosome.data[1];
-			chromosome.fitness = -chromosome.fitness;
+			chromosome.fitness = 0;
+			for(int i = 0; i < chromosome.data.length; i++) {
+				chromosome.fitness -= chromosome.data[i] * chromosome.data[i];
+			}
 		};
 
 		GeneticAlgorithm<FloatingPointChromosome> ga = new EliminationGA<>(50, pg, crossover, mutation, evaluator,
-				1000000, selection);
+				100000, selection);
 		
-		System.out.println(ga.run());
-
+		FloatingPointChromosome res = ga.run();
+		
+		System.out.println("Result: " + res);
+		
 	}
 
 }

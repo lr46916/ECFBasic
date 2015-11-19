@@ -21,7 +21,8 @@ public class FPGaussianMutation implements Mutation<FloatingPointChromosome> {
 		IRNG rand = RNG.getRNG();
 
 		for (int i = 0; i < target.data.length; i++) {
-			target.data[i] += target.data[i] + rand.nextGaussian() * std + mean;
+			if (rand.nextFloat() <= 0.05)
+				target.data[i] += rand.nextGaussian() * std + mean;
 		}
 
 	}

@@ -32,11 +32,11 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 
 		GeneticAlgorithm.evaluatePopulation(population, evaluator);
 		T best = GeneticAlgorithm.findBest(population);
-
+		
 		Set<T> populationSet = new HashSet<>(sizeOfPop);
 		populationSet.addAll(Arrays.asList(population));
 
-		System.out.println("Starting with: " + best);
+//		System.out.println("Starting with: " + best);
 		for (int i = 0; i < iterations; i++) {
 			boolean notOver = true;
 
@@ -56,7 +56,7 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 						continue;
 					}
 					evaluator.evaluate(children[0]);
-
+					
 					if (population[selectionRes[selectionRes.length - 1]]
 							.compareTo(children[0]) > 0
 							&& RNG.getRNG().nextFloat() <= 0.05) {
@@ -65,7 +65,7 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 						}
 						continue;
 					}
-
+					
 					populationSet
 							.remove(population[selectionRes[selectionRes.length - 1]]);
 					population[selectionRes[selectionRes.length - 1]] = children[0];
@@ -73,8 +73,8 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 
 					if (children[0].compareTo(best) > 0) {
 						best = (T) children[0].clone();
-						System.out.println("Best solution update, iteration "
-								+ (i + 1) + ", total " + total + " : " + best);
+//						System.out.println("Best solution update, iteration "
+//								+ (i + 1) + ", total " + total + " : " + best);
 					}
 					notOver = false;
 					break;
