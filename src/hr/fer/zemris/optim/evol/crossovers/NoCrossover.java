@@ -2,7 +2,6 @@ package hr.fer.zemris.optim.evol.crossovers;
 
 import java.lang.reflect.Array;
 
-import hr.fer.zemris.optim.algorithms.evol.ga.Crossover;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.rng.RNG;
 

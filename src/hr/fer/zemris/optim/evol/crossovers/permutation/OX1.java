@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import hr.fer.zemris.optim.algorithms.evol.ga.Crossover;
 import hr.fer.zemris.optim.evol.FieldChromosome;
 import hr.fer.zemris.optim.evol.PopulationGenerator;
+import hr.fer.zemris.optim.evol.crossovers.Crossover;
 import hr.fer.zemris.optim.rng.IRNG;
 import hr.fer.zemris.optim.rng.RNG;
 

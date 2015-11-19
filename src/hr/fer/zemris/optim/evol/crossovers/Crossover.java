@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.algorithms.evol.ga;
+package hr.fer.zemris.optim.evol.crossovers;
 
 import hr.fer.zemris.optim.evol.Chromosome;
 

@@ -6,12 +6,12 @@ import java.util.Set;
 
 import hr.fer.zemris.optim.LocalSearchAlgorithm;
 import hr.fer.zemris.optim.NeighbourhoodGenerator;
-import hr.fer.zemris.optim.algorithms.evol.ga.Crossover;
 import hr.fer.zemris.optim.algorithms.evol.ga.GeneticAlgorithm;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
 import hr.fer.zemris.optim.evol.PopulationGenerator;
+import hr.fer.zemris.optim.evol.crossovers.Crossover;
 import hr.fer.zemris.optim.rng.RNG;
 
 public class EliminationGAWithLocalSearch<T extends Chromosome> extends
