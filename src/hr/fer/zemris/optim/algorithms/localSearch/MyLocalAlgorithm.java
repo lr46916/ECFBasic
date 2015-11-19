@@ -11,7 +11,7 @@ import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.IOptAlgorithm;
 import hr.fer.zemris.optim.evol.Mutation;
-import hr.fer.zemris.optim.evol.mutations.permutation.MultipleSwapMutation;
+import hr.fer.zemris.optim.evol.mutations.impl.permutation.MultipleSwapMutation;
 
 public class MyLocalAlgorithm<T extends Chromosome> implements IOptAlgorithm<T> {
 

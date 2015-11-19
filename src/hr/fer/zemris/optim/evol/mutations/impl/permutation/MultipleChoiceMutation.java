@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.evol.mutations.permutation;
+package hr.fer.zemris.optim.evol.mutations.impl.permutation;
 
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Mutation;

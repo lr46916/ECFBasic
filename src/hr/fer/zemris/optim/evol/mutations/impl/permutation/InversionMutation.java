@@ -1,9 +1,9 @@
-package hr.fer.zemris.optim.evol.mutations.permutation;
+package hr.fer.zemris.optim.evol.mutations.impl.permutation;
 
 import java.util.Arrays;
 
-import hr.fer.zemris.optim.evol.FieldChromosome;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.chromosome.FieldChromosome;
 import hr.fer.zemris.optim.rng.IRNG;
 import hr.fer.zemris.optim.rng.RNG;
 

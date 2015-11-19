@@ -1,13 +1,13 @@
-package hr.fer.zemris.optim.evol.crossovers.permutation;
+package hr.fer.zemris.optim.evol.crossovers.impl.permutation;
 
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import hr.fer.zemris.optim.evol.FieldChromosome;
+import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.PopulationGenerator;
-import hr.fer.zemris.optim.evol.crossovers.Crossover;
+import hr.fer.zemris.optim.evol.chromosome.FieldChromosome;
 import hr.fer.zemris.optim.rng.IRNG;
 import hr.fer.zemris.optim.rng.RNG;
 

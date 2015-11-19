@@ -3,6 +3,7 @@ package hr.fer.zemris.optim.evol.crossovers;
 import java.lang.reflect.Array;
 
 import hr.fer.zemris.optim.evol.Chromosome;
+import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.rng.RNG;
 
 public class NoCrossover<T extends Chromosome> implements Crossover<T> {

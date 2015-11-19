@@ -1,9 +1,9 @@
-package hr.fer.zemris.optim.evol.crossovers.permutation;
+package hr.fer.zemris.optim.evol.crossovers.impl.permutation;
 
 import java.lang.reflect.Array;
 
 import hr.fer.zemris.optim.evol.Chromosome;
-import hr.fer.zemris.optim.evol.crossovers.Crossover;
+import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.rng.RNG;
 
 public class NoCrossover<T extends Chromosome> implements Crossover<T> {

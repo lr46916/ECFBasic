@@ -1,4 +1,6 @@
-package hr.fer.zemris.optim.evol;
+package hr.fer.zemris.optim.evol.chromosome;
+
+import hr.fer.zemris.optim.evol.Chromosome;
 
 public abstract class FieldChromosome extends Chromosome {
 	
