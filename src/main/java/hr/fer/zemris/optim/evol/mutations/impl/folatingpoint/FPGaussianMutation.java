@@ -9,11 +9,13 @@ public class FPGaussianMutation implements Mutation<FloatingPointChromosome> {
 
 	private double mean;
 	private double std;
+	private double chanceOfMut;
 
-	public FPGaussianMutation(double mean, double std) {
+	public FPGaussianMutation(double mean, double std, double chanceOfMut) {
 		super();
 		this.mean = mean;
 		this.std = std;
+		this.chanceOfMut = chanceOfMut;
 	}
 
 	@Override
@@ -21,7 +23,7 @@ public class FPGaussianMutation implements Mutation<FloatingPointChromosome> {
 		IRNG rand = RNG.getRNG();
 
 		for (int i = 0; i < target.data.length; i++) {
-			if (rand.nextFloat() <= 0.05)
+			if (rand.nextFloat() <= chanceOfMut)
 				target.data[i] += rand.nextGaussian() * std + mean;
 		}
 

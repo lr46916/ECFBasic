@@ -26,7 +26,7 @@ public class FloatingPointChromosomePG implements PopulationGenerator<FloatingPo
 			double[] data = new double[solutionSize];
 			
 			for(int j = 0; j < solutionSize; j++) {
-				data[j] = rand.nextGaussian() + 100;
+				data[j] = rand.nextGaussian();
 			}
 
 			result[i] = new FloatingPointChromosome(data);

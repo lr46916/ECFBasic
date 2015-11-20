@@ -18,6 +18,7 @@ public class FloatingPointExample {
 	
 	/**
 	 * Example of finding a minimum of a function f(x1,...,x5) = x1^2 + x2^2 + ... + x5^2 
+	 * Of course minimum value is 0.
 	 * using genetic alghorithm
 	 */
 	public static void main(String[] args) {
@@ -28,7 +29,7 @@ public class FloatingPointExample {
 
 		Crossover<FloatingPointChromosome> crossover = new FPSimpleCrossover();
 
-		Mutation<FloatingPointChromosome> mutation = new FPGaussianMutation(0, 1);
+		Mutation<FloatingPointChromosome> mutation = new FPGaussianMutation(0, 1, 0.02);
 
 		Evaluator<FloatingPointChromosome> evaluator = (chromosome) -> {
 			chromosome.fitness = 0;
@@ -38,7 +39,7 @@ public class FloatingPointExample {
 		};
 
 		GeneticAlgorithm<FloatingPointChromosome> ga = new EliminationGA<>(50, pg, crossover, mutation, evaluator,
-				100000, selection);
+				10000, selection);
 		
 		FloatingPointChromosome res = ga.run();
 		

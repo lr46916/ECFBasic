@@ -36,7 +36,7 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 		Set<T> populationSet = new HashSet<>(sizeOfPop);
 		populationSet.addAll(Arrays.asList(population));
 
-//		System.out.println("Starting with: " + best);
+		System.out.println("Starting with: " + best);
 		for (int i = 0; i < iterations; i++) {
 			boolean notOver = true;
 
@@ -73,8 +73,8 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 
 					if (children[0].compareTo(best) > 0) {
 						best = (T) children[0].clone();
-//						System.out.println("Best solution update, iteration "
-//								+ (i + 1) + ", total " + total + " : " + best);
+						System.out.println("Best solution update, iteration "
+								+ (i + 1) + ", total " + total + " : " + best);
 					}
 					notOver = false;
 					break;
