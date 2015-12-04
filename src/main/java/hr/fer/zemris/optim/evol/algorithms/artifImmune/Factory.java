@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.algorithms.evol.artifImmune;
+package hr.fer.zemris.optim.evol.algorithms.artifImmune;
 
 import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 

@@ -1,10 +1,10 @@
 package hr.fer.zemris.optim.examples.floatingpoint;
 
-import hr.fer.zemris.optim.algorithms.evol.ga.GeneticAlgorithm;
-import hr.fer.zemris.optim.algorithms.evol.ga.tournament.EliminationGA;
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.algorithms.ga.GeneticAlgorithm;
+import hr.fer.zemris.optim.evol.algorithms.ga.tournament.EliminationGA;
 import hr.fer.zemris.optim.evol.chromosome.FloatingPointChromosome;
 import hr.fer.zemris.optim.evol.crossovers.impl.floatingpoint.FPSimpleCrossover;
 import hr.fer.zemris.optim.evol.mutations.impl.folatingpoint.FPGaussianMutation;

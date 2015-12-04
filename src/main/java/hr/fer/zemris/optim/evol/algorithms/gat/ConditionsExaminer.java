@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.algorithms.evol.gat;
+package hr.fer.zemris.optim.evol.algorithms.gat;
 
 public interface ConditionsExaminer<T> {
 	public boolean treePartCondtitionsMet(T target);

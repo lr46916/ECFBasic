@@ -1,14 +1,14 @@
-package hr.fer.zemris.optim.algorithms.evol.ga.tournament;
+package hr.fer.zemris.optim.evol.algorithms.ga.tournament;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import hr.fer.zemris.optim.algorithms.evol.ga.GeneticAlgorithm;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.algorithms.ga.GeneticAlgorithm;
 import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 import hr.fer.zemris.optim.evol.selection.impl.SelectionTournament;
 import hr.fer.zemris.optim.rng.RNG;

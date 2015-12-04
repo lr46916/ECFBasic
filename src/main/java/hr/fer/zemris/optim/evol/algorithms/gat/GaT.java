@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.algorithms.evol.gat;
+package hr.fer.zemris.optim.evol.algorithms.gat;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

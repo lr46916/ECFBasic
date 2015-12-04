@@ -1,10 +1,10 @@
-package hr.fer.zemris.optim.algorithms.evol.ga.generation;
+package hr.fer.zemris.optim.evol.algorithms.ga.generation;
 
-import hr.fer.zemris.optim.algorithms.evol.ga.GeneticAlgorithm;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.algorithms.ga.GeneticAlgorithm;
 import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 import hr.fer.zemris.optim.evol.selection.Selection;
 

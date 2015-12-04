@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.algorithms.evol.gat;
+package hr.fer.zemris.optim.evol.algorithms.gat;
 
 import hr.fer.zemris.optim.LocalSearchAlgorithm;
 import hr.fer.zemris.optim.NeighbourhoodGenerator;

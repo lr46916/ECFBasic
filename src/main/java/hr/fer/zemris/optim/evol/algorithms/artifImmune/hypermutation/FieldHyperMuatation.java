@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.algorithms.evol.artifImmune.hypermutation;
+package hr.fer.zemris.optim.evol.algorithms.artifImmune.hypermutation;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import hr.fer.zemris.optim.algorithms.evol.artifImmune.HyperMutation;
+import hr.fer.zemris.optim.evol.algorithms.artifImmune.HyperMutation;
 import hr.fer.zemris.optim.evol.chromosome.PermutationChromosome;
 import hr.fer.zemris.optim.rng.IRNG;
 import hr.fer.zemris.optim.rng.RNG;
