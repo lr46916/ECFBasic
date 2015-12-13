@@ -23,7 +23,7 @@ public class GenerationGA<T extends Chromosome> extends GenerationGAAbs<T> {
 	}
 
 	@Override
-	public T run() {
+	public T[] runAndReturnFinishingPopulation() {
 
 		T[] population = pg.generatePopulation(sizeOfPop);
 		@SuppressWarnings("unchecked")
@@ -86,7 +86,7 @@ public class GenerationGA<T extends Chromosome> extends GenerationGAAbs<T> {
 			nextGeneration = tmp;
 		}
 
-		return best;
+		return population;
 	}
 
 }

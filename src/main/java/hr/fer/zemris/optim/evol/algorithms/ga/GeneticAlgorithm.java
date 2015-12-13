@@ -3,12 +3,12 @@ package hr.fer.zemris.optim.evol.algorithms.ga;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.IOptAlgorithm;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.PopulationAlgorithm;
 import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 
 public abstract class GeneticAlgorithm<T extends Chromosome> implements
-		IOptAlgorithm<T> {
+		PopulationAlgorithm<T> {
 	protected int sizeOfPop;
 	protected PopulationGenerator<T> pg;
 	protected Crossover<T> crossover;
@@ -43,6 +43,10 @@ public abstract class GeneticAlgorithm<T extends Chromosome> implements
 			}
 		}
 		return best;
+	}
+	
+	public T run() {
+		return findBest(runAndReturnFinishingPopulation());
 	}
 
 }

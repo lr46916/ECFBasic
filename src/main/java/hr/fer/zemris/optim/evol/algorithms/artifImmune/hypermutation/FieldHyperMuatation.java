@@ -2,7 +2,6 @@ package hr.fer.zemris.optim.evol.algorithms.artifImmune.hypermutation;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -24,7 +23,7 @@ public class FieldHyperMuatation<T extends PermutationChromosome> implements  Hy
 	}
 
 	@Override
-	public void mutate(PermutationChromosome target, int rank) {
+	public void mutate(T target, int rank) {
 		int numberOfMutations = (int) (1 + target.field.length
 				* (1 - Math.pow(Math.E, -(rank / t)))) + 1;
 //		for (int i = 0; i < numberOfMutations; i++) {

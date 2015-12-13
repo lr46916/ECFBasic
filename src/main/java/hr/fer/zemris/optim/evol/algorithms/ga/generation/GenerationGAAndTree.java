@@ -27,7 +27,7 @@ public class GenerationGAAndTree<T extends Chromosome> extends
 	}
 
 	@Override
-	public T run() {
+	public T[] runAndReturnFinishingPopulation() {
 		T[] population = pg.generatePopulation(sizeOfPop);
 		@SuppressWarnings("unchecked")
 		T[] nextGeneration = (T[]) Array.newInstance(population[0].getClass(),
@@ -84,7 +84,7 @@ public class GenerationGAAndTree<T extends Chromosome> extends
 				T hlp = lsa.run();
 				System.out.println("Returned: " + hlp);
 				if (hlp == null) {
-					return best;
+					return population;
 				} else {
 					population[RNG.getRNG().nextInt(sizeOfPop)] = hlp;
 					best = (T) hlp.clone();
@@ -93,7 +93,7 @@ public class GenerationGAAndTree<T extends Chromosome> extends
 			}
 		}
 
-		return best;
+		return population;
 	}
 
 }

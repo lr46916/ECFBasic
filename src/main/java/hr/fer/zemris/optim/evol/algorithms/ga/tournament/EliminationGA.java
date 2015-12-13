@@ -26,7 +26,7 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 	}
 
 	@Override
-	public T run() {
+	public T[] runAndReturnFinishingPopulation() {
 		T[] population = pg.generatePopulation(sizeOfPop);
 		int total = sizeOfPop;
 
@@ -36,7 +36,7 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 		Set<T> populationSet = new HashSet<>(sizeOfPop);
 		populationSet.addAll(Arrays.asList(population));
 
-		System.out.println("Starting with: " + best);
+		System.out.println("Starting with: " + best.fitness);
 		for (int i = 0; i < iterations; i++) {
 			boolean notOver = true;
 
@@ -70,27 +70,28 @@ public class EliminationGA<T extends Chromosome> extends GeneticAlgorithm<T> {
 							.remove(population[selectionRes[selectionRes.length - 1]]);
 					population[selectionRes[selectionRes.length - 1]] = children[0];
 					populationSet.add(children[0]);
+					
+//					System.out.println("Child's fitness: " + children[0].fitness);
 
 					if (children[0].compareTo(best) > 0) {
 						best = (T) children[0].clone();
 						System.out.println("Best solution update, iteration "
-								+ (i + 1) + ", total " + total + " : " + best);
+								+ (i + 1) + ", total " + total + " : " + best.fitness);
 					}
 					notOver = false;
 					break;
 				}
 			}
-//			 if (i % 10000 == 0) {
-//			 System.out
-//			 .println("CURRENT POPULATION -------------------------");
-//			 for (int k = 0; k < sizeOfPop; k++) {
-//			 System.out.println(population[k]);
-//			 }
-//			 System.out.println("------------------------------");
-//			 }
+//			if (i % 10000 == 0) {
+//				System.out.println("CURRENT POPULATION -------------------------");
+//				for (int k = 0; k < sizeOfPop; k++) {
+//					System.out.println(population[k]);
+//				}
+//				System.out.println("------------------------------");
+//			}
 		}
 
-		return best;
+		return population;
 	}
 
 }

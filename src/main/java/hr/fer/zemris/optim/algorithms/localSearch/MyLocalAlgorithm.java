@@ -6,9 +6,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
+import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.IOptAlgorithm;
 import hr.fer.zemris.optim.evol.Mutation;
 import hr.fer.zemris.optim.evol.algorithms.artifImmune.Factory;
 import hr.fer.zemris.optim.evol.mutations.impl.permutation.MultipleSwapMutation;

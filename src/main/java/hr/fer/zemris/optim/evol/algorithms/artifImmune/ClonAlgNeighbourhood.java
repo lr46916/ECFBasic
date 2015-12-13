@@ -3,11 +3,11 @@ package hr.fer.zemris.optim.evol.algorithms.artifImmune;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
+import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.NeighbourhoodGenerator;
 import hr.fer.zemris.optim.Pool;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.IOptAlgorithm;
 
 public class ClonAlgNeighbourhood<T extends Chromosome> implements
 		IOptAlgorithm<T> {

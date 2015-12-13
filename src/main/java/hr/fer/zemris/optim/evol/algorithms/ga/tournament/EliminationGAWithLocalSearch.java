@@ -32,8 +32,7 @@ public class EliminationGAWithLocalSearch<T extends Chromosome> extends
 		this.ng = ng;
 	}
 
-	@Override
-	public T run() {
+	public T[] runAndReturnFinishingPopulation() {
 		T[] population = pg.generatePopulation(sizeOfPop);
 
 		GeneticAlgorithm.evaluatePopulation(population, evaluator);
@@ -107,6 +106,6 @@ public class EliminationGAWithLocalSearch<T extends Chromosome> extends
 
 		}
 
-		return best;
+		return population;
 	}
 }

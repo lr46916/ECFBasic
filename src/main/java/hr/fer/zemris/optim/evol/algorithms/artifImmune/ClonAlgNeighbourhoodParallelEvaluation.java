@@ -7,11 +7,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.NeighbourhoodGenerator;
 import hr.fer.zemris.optim.Pool;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.IOptAlgorithm;
 import hr.fer.zemris.optim.evol.parallel.impl.EvaluationWorker;
 
 public class ClonAlgNeighbourhoodParallelEvaluation<T extends Chromosome>

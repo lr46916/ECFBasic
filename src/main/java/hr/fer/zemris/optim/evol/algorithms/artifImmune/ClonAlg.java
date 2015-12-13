@@ -1,9 +1,9 @@
 package hr.fer.zemris.optim.evol.algorithms.artifImmune;
 
+import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.Pool;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.IOptAlgorithm;
 import hr.fer.zemris.optim.evol.parallel.impl.EvaluationWorker;
 
 import java.lang.reflect.Array;

@@ -1,9 +1,9 @@
 package hr.fer.zemris.optim.evol.algorithms.gat;
 
+import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.LocalSearchAlgorithm;
 import hr.fer.zemris.optim.NeighbourhoodGenerator;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.IOptAlgorithm;
 
 public class TreeAlgorithm<T> implements LocalSearchAlgorithm<T> {
 
