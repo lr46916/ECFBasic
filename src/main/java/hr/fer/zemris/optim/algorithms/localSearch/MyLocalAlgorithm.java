@@ -20,8 +20,7 @@ public class MyLocalAlgorithm<T extends Chromosome> implements IOptAlgorithm<T> 
 	private Evaluator<T> eval;
 	private int it;
 
-	public MyLocalAlgorithm(Collection<Mutation<T>> mutations,
-			Factory<T> factory, Evaluator<T> eval, int it) {
+	public MyLocalAlgorithm(Collection<Mutation<T>> mutations, Factory<T> factory, Evaluator<T> eval, int it) {
 		super();
 		this.mutations = mutations;
 		this.factory = factory;
@@ -31,13 +30,12 @@ public class MyLocalAlgorithm<T extends Chromosome> implements IOptAlgorithm<T> 
 
 	@Override
 	public T run() {
-		Comparator<T> comp = (x, y) -> -x.compareTo(y);
-		PriorityQueue<T> heap = new PriorityQueue<>(comp);
 		T solution = factory.createElement();
-		@SuppressWarnings("unchecked")
-		T best = (T) solution.clone();
 		eval.evaluate(solution);
 
+		@SuppressWarnings("unchecked")
+		T best = (T) solution.clone();
+		
 		System.out.println("Starts with: " + solution);
 
 		for (int i = 0; i < it; i++) {
@@ -46,21 +44,17 @@ public class MyLocalAlgorithm<T extends Chromosome> implements IOptAlgorithm<T> 
 				T target = (T) solution.clone();
 				mut.mutate(target);
 				eval.evaluate(target);
-				// System.out.println(target.fitness + " " +
-				// solution.equals(target));
-				heap.add(target);
+				if (target.compareTo(solution) > 0)
+					solution = target;
 			}
-			solution = heap.remove();
-			if (best.compareTo(solution) < 0) {
+			if (solution.compareTo(best) > 0) {
 				best = solution;
-				System.out.println("Best solution update, itaration " + i + ":"
-						+ best);
+				System.out.println("Best solution update, itaration " + i + ":" + best);
 			}
-			heap.clear();
 		}
 
 		System.out.println("Done??");
-		return solution;
+		return best;
 	}
 
 }

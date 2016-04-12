@@ -1,10 +1,10 @@
-package hr.fer.zemris.optim.examples.floatingpoint;
+package hr.fer.zemris.optim.evol.examples.floatingpoint;
 
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
 import hr.fer.zemris.optim.evol.algorithms.ga.GeneticAlgorithm;
-import hr.fer.zemris.optim.evol.algorithms.ga.tournament.EliminationGA;
+import hr.fer.zemris.optim.evol.algorithms.ga.tournament.EliminationGAUniqueChromosomes;
 import hr.fer.zemris.optim.evol.chromosome.FloatingPointChromosome;
 import hr.fer.zemris.optim.evol.crossovers.impl.floatingpoint.FPSimpleCrossover;
 import hr.fer.zemris.optim.evol.mutations.impl.folatingpoint.FPGaussianMutation;
@@ -38,7 +38,7 @@ public class FloatingPointExample {
 			}
 		};
 
-		GeneticAlgorithm<FloatingPointChromosome> ga = new EliminationGA<>(50, pg, crossover, mutation, evaluator,
+		GeneticAlgorithm<FloatingPointChromosome> ga = new EliminationGAUniqueChromosomes<>(50, pg, crossover, mutation, evaluator,
 				10000, selection);
 		
 		FloatingPointChromosome res = ga.run();

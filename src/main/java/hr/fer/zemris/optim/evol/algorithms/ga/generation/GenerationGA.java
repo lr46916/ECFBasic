@@ -31,7 +31,6 @@ public class GenerationGA<T extends Chromosome> extends GenerationGAAbs<T> {
 				sizeOfPop);
 
 		GeneticAlgorithm.evaluatePopulation(population,evaluator);
-		Set<T> populationSet = new HashSet<>(sizeOfPop);
 
 		@SuppressWarnings("unchecked")
 		T best = (T) GeneticAlgorithm.findBest(population).clone();
@@ -39,8 +38,6 @@ public class GenerationGA<T extends Chromosome> extends GenerationGAAbs<T> {
 		for (int i = 0; i < iterations; i++) {
 			int nextGenSize = 1;
 			nextGeneration[0] = (T) best.clone();
-			populationSet.clear();
-			populationSet.add(nextGeneration[0]);
 			while (nextGenSize < sizeOfPop) {
 				int firstParentIndex = maleSelection.doSelection(population);
 				int secondParentIndex = femaleSelection.doSelection(population);
@@ -59,24 +56,12 @@ public class GenerationGA<T extends Chromosome> extends GenerationGAAbs<T> {
 
 				for (int k = 0; k < children.length && nextGenSize < sizeOfPop; k++) {
 					mutation.mutate(children[k]);
-					if(populationSet.contains(children[k])){
-						continue;
-					}
-					populationSet.add(children[k]);
 					evaluator.evaluate(children[k]);
 					if (best.compareTo(children[k]) < 0) {
 						best = (T) children[k].clone();
 						System.out.println("Best solution update, generation "
 								+ i + ", value:" + best);
 					}
-//					Set<Integer> bla = new HashSet<>();
-//					for (int x = 0; x < 256; x++) {
-//						bla.add(((SBoxChromosome)children[k]).field[x]);
-//					}
-//					if (bla.size() != 256) {
-//						System.err.println("ERROR IN MUTATION");
-//						System.exit(-1);
-//					}
 					nextGeneration[nextGenSize++] = children[k];
 				}
 

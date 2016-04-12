@@ -1,4 +1,4 @@
-package hr.fer.zemris.optim.evol.algorithms.multiobj.nsga;
+package hr.fer.zemris.optim.evol.multiobj.algorithms.nsga;
 
 public class SharingFunction {
 	private double sigma;

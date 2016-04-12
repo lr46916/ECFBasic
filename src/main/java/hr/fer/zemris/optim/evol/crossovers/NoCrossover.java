@@ -11,18 +11,15 @@ public class NoCrossover<T extends Chromosome> implements Crossover<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public T[] doCrossover(T parentOne, T parentTwo) {
-		
-		T[] res = (T[]) Array.newInstance(parentOne.getClass(), 2);		
-		
-		if(RNG.getRNG().nextBoolean()){
-			T tmp = parentOne;
-			parentOne = parentTwo;
-			parentTwo = tmp;
+
+		T[] res = (T[]) Array.newInstance(parentOne.getClass(), 1);
+
+		if (RNG.getRNG().nextBoolean()) {
+			res[0] = (T) parentOne.clone();
+		} else {
+			res[0] = (T) parentTwo.clone();
 		}
-			
-		res[0] = (T) parentOne.clone();
-		res[1] = (T) parentTwo.clone();
-		
+
 		return res;
 	}
 
