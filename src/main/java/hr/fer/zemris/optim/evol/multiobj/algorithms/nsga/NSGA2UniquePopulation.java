@@ -3,7 +3,6 @@ package hr.fer.zemris.optim.evol.multiobj.algorithms.nsga;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +12,8 @@ import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.PopulationGenerator;
 import hr.fer.zemris.optim.evol.multiobj.MultiObjective;
-import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 
 public class NSGA2UniquePopulation<T extends Chromosome & MultiObjective> implements IMultiObjOptAlgorithm<T> {
 

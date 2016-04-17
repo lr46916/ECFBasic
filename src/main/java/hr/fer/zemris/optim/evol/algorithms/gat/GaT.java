@@ -6,7 +6,7 @@ import java.util.Arrays;
 import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.NeighbourhoodGenerator;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
+import hr.fer.zemris.optim.evol.PopulationGenerator;
 
 public class GaT<T> implements IOptAlgorithm<T> {
 	private int M;

@@ -7,8 +7,8 @@ import java.util.Random;
 import java.util.Set;
 
 import hr.fer.zemris.optim.evol.Crossover;
+import hr.fer.zemris.optim.evol.PopulationGenerator;
 import hr.fer.zemris.optim.evol.chromosome.PermutationChromosome;
-import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 import hr.fer.zemris.optim.rng.IRNG;
 import hr.fer.zemris.optim.rng.RNG;
 

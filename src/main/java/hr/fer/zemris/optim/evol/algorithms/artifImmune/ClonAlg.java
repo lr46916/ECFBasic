@@ -4,20 +4,16 @@ import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.Pool;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
-import hr.fer.zemris.optim.evol.parallel.impl.EvaluationWorker;
+import hr.fer.zemris.optim.evol.Factory;
+import hr.fer.zemris.optim.evol.PopulationAlgorithm;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Queue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
 
-public class ClonAlg<T extends Chromosome> implements IOptAlgorithm<T> {
+public class ClonAlg<T extends Chromosome> implements PopulationAlgorithm<T> {
 
 	private HyperMutation<T> mutate;
 	private Factory<T> fact;
-	private Pool<T> pool;
 	private Replicator<T> replicator;
 	private double b;
 	private Evaluator<T> eval;
@@ -25,29 +21,53 @@ public class ClonAlg<T extends Chromosome> implements IOptAlgorithm<T> {
 	private int iterations;
 	private int d;
 
-	public ClonAlg(HyperMutation<T> mutate, Factory<T> fact, Pool<T> pool,
-			Replicator<T> replicator, double b, Evaluator<T> eval,
+	private int[] numberOfClonesPerSolution;
+
+	/**
+	 * 
+	 * @param mutate
+	 * @param fact
+	 * @param pool
+	 * @param replicator
+	 * @param b
+	 *            Parameter defining size of clone population.
+	 * @param eval
+	 * @param sizeOfPop
+	 * @param iterations
+	 * @param d
+	 *            Number of fleshly (randomly) generated solutions each
+	 *            iteration.
+	 */
+	public ClonAlg(HyperMutation<T> mutate, Factory<T> fact, Replicator<T> replicator, double b, Evaluator<T> eval,
 			int sizeOfPop, int iterations, int d) {
 		super();
 		this.mutate = mutate;
 		this.fact = fact;
-		this.pool = pool;
 		this.replicator = replicator;
 		this.b = b;
 		this.eval = eval;
 		this.sizeOfPop = sizeOfPop;
 		this.iterations = iterations;
 		this.d = d;
+
+		this.numberOfClonesPerSolution = new int[sizeOfPop];
+
 	}
 
 	@Override
 	public T run() {
-		Queue<T> toEvaluate = new LinkedBlockingQueue<>();
-		Queue<T> results = new LinkedBlockingQueue<>();
-		int numOfThreads = Runtime.getRuntime().availableProcessors();
-		ExecutorService ec = Executors.newFixedThreadPool(numOfThreads);
-		for (int i = 0; i < numOfThreads; i++)
-			ec.submit(new EvaluationWorker<T>(toEvaluate, results, eval));
+		T[] population = runAndReturnFinishingPopulation();
+		T res = population[0];
+		for (int i = 1; i < population.length; ++i) {
+			if (res.compareTo(population[i]) < 0) {
+				res = population[i];
+			}
+		}
+		return res;
+	}
+
+	@Override
+	public T[] runAndReturnFinishingPopulation() {
 		T[] population = fact.generatePopulation(sizeOfPop);
 		int sizeOfClonePop = 0;
 		Chromosome best = population[0];
@@ -56,63 +76,51 @@ public class ClonAlg<T extends Chromosome> implements IOptAlgorithm<T> {
 			if (population[i].compareTo(best) > 0)
 				best = population[i].clone();
 			sizeOfClonePop += ((b * sizeOfPop) / (i + 1));
+			numberOfClonesPerSolution[i] = (int) ((b * sizeOfPop) / (i + 1));
 		}
 		System.out.println(sizeOfClonePop);
 		@SuppressWarnings("unchecked")
-		T[] clones = (T[]) Array.newInstance(population[0].getClass(),
-				sizeOfClonePop);
-		System.out.println("Starts with: " + best);
+		T[] clones = (T[]) Array.newInstance(population[0].getClass(), sizeOfClonePop);
+		System.out.println("Starts with: " + best.fitness);
 		for (int i = 0; i < iterations; i++) {
-			Arrays.sort(population, (x,y) -> -x.compareTo(y));
-//			long start = System.nanoTime();
+			Arrays.sort(population, (x, y) -> -x.compareTo(y));
 			clonePop(population, clones, sizeOfClonePop);
-//			System.out.println((System.nanoTime()-start) * 0.0000000001);
-//			System.out.println(sizeOfClonePop);
-			for (int j = 0; j < sizeOfClonePop; j++) {
-				toEvaluate.add(clones[j]);
-			}
 
-			for (int j = 0; j < sizeOfClonePop; j++) {
-				T res;
-				while ((res = results.poll()) == null)
-					;
-				clones[j] = res;
-			}
-			Arrays.sort(clones,(x,y) -> -x.compareTo(y));
-//			System.out.println(Arrays.toString(clones));
-//			System.exit(-1);
-			for (int j = 1; j < sizeOfPop - d; j++) {
-				pool.free(population[j]);
+			mutate.mutate(clones);
+			eval.evaluate(clones);
+
+			Arrays.sort(clones, (x, y) -> -x.compareTo(y));
+
+			for (int j = 0; j < sizeOfPop - d; j++) {
+				fact.free(population[j]);
 				population[j] = clones[j];
 			}
 			for (int j = sizeOfPop - d; j < sizeOfPop; j++) {
-				pool.free(population[j]);
-				pool.free(clones[j]);
-				population[j] = fact.createElement();
+				fact.free(population[j]);
+				fact.free(clones[j]);
+				population[j] = fact.generateElement();
 				eval.evaluate(population[j]);
 			}
 			for (int j = sizeOfPop; j < sizeOfClonePop; j++) {
-				pool.free(clones[j]);
+				fact.free(clones[j]);
 			}
 			if (population[0].compareTo(best) > 0) {
 				best = population[0].clone();
-				System.out.println("Best sol update, gen " + (i + 1) + ": " + best);
+				System.out.println("Best sol update, gen " + (i + 1) + ": " + best.fitness);
 			}
 		}
-		@SuppressWarnings("unchecked")
-		T returnValue = (T) best;
-		return returnValue;
+
+		return population;
 	}
 
 	private void clonePop(T[] population, T[] clones, int sizeOfClonePop) {
 		int offset = 0;
 		for (int i = 0; i < sizeOfPop; i++) {
-			int numOfClones = (int) ((b * sizeOfPop) / (i + 1));
+			int numOfClones = numberOfClonesPerSolution[i];
 			for (int j = 0; j < numOfClones; j++) {
-				T clone = pool.getElement();
+				T clone = fact.getElement();
 				replicator.replicateAToB(population[i], clone);
 				clones[offset + j] = clone;
-				mutate.mutate(clone, i);
 			}
 			offset += numOfClones;
 		}

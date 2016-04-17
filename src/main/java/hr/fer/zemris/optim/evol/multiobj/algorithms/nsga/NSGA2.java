@@ -11,8 +11,8 @@ import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.PopulationGenerator;
 import hr.fer.zemris.optim.evol.multiobj.MultiObjective;
-import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 
 public class NSGA2<T extends Chromosome & MultiObjective> implements IMultiObjOptAlgorithm<T> {
 

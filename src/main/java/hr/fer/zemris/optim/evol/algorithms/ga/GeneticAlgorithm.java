@@ -5,7 +5,7 @@ import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
 import hr.fer.zemris.optim.evol.PopulationAlgorithm;
-import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
+import hr.fer.zemris.optim.evol.PopulationGenerator;
 
 public abstract class GeneticAlgorithm<T extends Chromosome> implements
 		PopulationAlgorithm<T> {

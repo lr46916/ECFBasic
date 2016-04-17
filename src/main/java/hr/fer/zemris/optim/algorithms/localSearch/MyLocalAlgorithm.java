@@ -9,8 +9,8 @@ import java.util.PriorityQueue;
 import hr.fer.zemris.optim.IOptAlgorithm;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
+import hr.fer.zemris.optim.evol.Factory;
 import hr.fer.zemris.optim.evol.Mutation;
-import hr.fer.zemris.optim.evol.algorithms.artifImmune.Factory;
 import hr.fer.zemris.optim.evol.mutations.impl.permutation.MultipleSwapMutation;
 
 public class MyLocalAlgorithm<T extends Chromosome> implements IOptAlgorithm<T> {
@@ -30,7 +30,7 @@ public class MyLocalAlgorithm<T extends Chromosome> implements IOptAlgorithm<T> 
 
 	@Override
 	public T run() {
-		T solution = factory.createElement();
+		T solution = factory.generateElement();
 		eval.evaluate(solution);
 
 		@SuppressWarnings("unchecked")

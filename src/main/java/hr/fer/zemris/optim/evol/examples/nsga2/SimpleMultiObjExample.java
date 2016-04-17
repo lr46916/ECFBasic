@@ -6,10 +6,9 @@ import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Crossover;
 import hr.fer.zemris.optim.evol.Evaluator;
 import hr.fer.zemris.optim.evol.Mutation;
+import hr.fer.zemris.optim.evol.PopulationGenerator;
 import hr.fer.zemris.optim.evol.multiobj.MultiObjective;
-import hr.fer.zemris.optim.evol.multiobj.algorithms.nsga.NSGA2;
 import hr.fer.zemris.optim.evol.multiobj.algorithms.nsga.NSGA2UniquePopulation;
-import hr.fer.zemris.optim.evol.populationgenerator.PopulationGenerator;
 import hr.fer.zemris.optim.rng.IRNG;
 import hr.fer.zemris.optim.rng.RNG;
 

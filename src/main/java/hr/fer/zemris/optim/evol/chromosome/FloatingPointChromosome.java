@@ -13,6 +13,11 @@ public class FloatingPointChromosome extends Chromosome {
 		this.data = data;
 	}
 
+	public FloatingPointChromosome(int size) {
+		super();
+		this.data = new double[size];
+	}
+
 	@Override
 	public Chromosome clone() {
 		FloatingPointChromosome res = new FloatingPointChromosome(Arrays.copyOf(data, data.length));
@@ -24,24 +29,25 @@ public class FloatingPointChromosome extends Chromosome {
 	public Chromosome newLikeThis() {
 		return new FloatingPointChromosome(new double[data.length]);
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return Arrays.toString(data) + " -> " + fitness;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
-		if(o instanceof FloatingPointChromosome) {
-			return Arrays.equals(data, ((FloatingPointChromosome)o).data);
-		} else 
+		if (o instanceof FloatingPointChromosome) {
+			return Arrays.equals(data, ((FloatingPointChromosome) o).data);
+		} else
 			return false;
 	}
-	
-	private Integer hc = null; 
+
+	private Integer hc = null;
+
 	@Override
 	public int hashCode() {
-		if(hc == null) {
+		if (hc == null) {
 			hc = Arrays.hashCode(data);
 		}
 		return hc;

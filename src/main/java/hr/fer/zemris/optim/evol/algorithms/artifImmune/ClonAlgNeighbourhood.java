@@ -8,26 +8,24 @@ import hr.fer.zemris.optim.NeighbourhoodGenerator;
 import hr.fer.zemris.optim.Pool;
 import hr.fer.zemris.optim.evol.Chromosome;
 import hr.fer.zemris.optim.evol.Evaluator;
+import hr.fer.zemris.optim.evol.Factory;
 
 public class ClonAlgNeighbourhood<T extends Chromosome> implements
 		IOptAlgorithm<T> {
 
 	private NeighbourhoodGenerator<T> ng;
 	private Factory<T> fact;
-	private Pool<T> pool;
 	private double b;
 	private Evaluator<T> eval;
 	private int sizeOfPop;
 	private int iterations;
 	private int d;
 
-	public ClonAlgNeighbourhood(NeighbourhoodGenerator<T> ng, Factory<T> fact,
-			Pool<T> pool, double b,
+	public ClonAlgNeighbourhood(NeighbourhoodGenerator<T> ng, Factory<T> fact, double b,
 			Evaluator<T> eval, int sizeOfPop, int iterations, int d) {
 		super();
 		this.ng = ng;
 		this.fact = fact;
-		this.pool = pool;
 		this.b = b;
 		this.eval = eval;
 		this.sizeOfPop = sizeOfPop;
@@ -58,29 +56,24 @@ public class ClonAlgNeighbourhood<T extends Chromosome> implements
 				System.out.println("Best sol update, gen " + (i + 1) + ": "
 						+ best);
 			}
-			// long start = System.nanoTime();
 			clonePop(population, clones, sizeOfClonePop);
-			// System.out.println((System.nanoTime()-start) * 0.0000000001);
-			// System.out.println(sizeOfClonePop);
 			
 			for (int j = 0; j < sizeOfClonePop; j++) {
 				eval.evaluate(clones[j]);
 			}
 
 			Arrays.sort(clones, (x, y) -> -x.compareTo(y));
-			// System.out.println(Arrays.toString(clones));
-			// System.exit(-1);
 			for (int j = 2; j <= sizeOfPop - d; j++) {
-				pool.free(population[sizeOfPop - j]);
+				fact.free(population[sizeOfPop - j]);
 				population[sizeOfPop - j] = clones[j];
 			}
 			for (int j = 0; j < d; j++) {
-				pool.free(population[j]);
-				population[j] = fact.createElement();
+				fact.free(population[j]);
+				population[j] = fact.generateElement();
 				eval.evaluate(population[j]);
 			}
 			for (int j = sizeOfPop - d; j < sizeOfClonePop; j++) {
-				pool.free(clones[j]);
+				fact.free(clones[j]);
 			}
 
 		}
